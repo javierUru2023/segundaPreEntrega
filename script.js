@@ -86,12 +86,11 @@ function finalizarCompra() {
   let continuarCompra = prompt(`${resumenCarrito}\nDeseas seguir comprando?\n1. SI\n2. NO`);
 
   if (continuarCompra === "1") {
-    mostrarMenu();  
-    alert("Gracias por tu compra! Te esperamos pronto!!");
-    
+    mostrarMenu();
+  }else if (continuarCompra === "2"){
+    alert("Gracias por tu compra! Te esperamos pronto!!"); 
     usuarios = [];
-    carrito = [];
-    
+    carrito = [];  
     iniciarAplicacion();
   }
 }
