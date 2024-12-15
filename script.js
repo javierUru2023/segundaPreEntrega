@@ -39,14 +39,12 @@ function filtrarProductos(categoria, criterio, valor) {
   valor = valor.toLowerCase();
 
   if (criterio === "marca") {
-
     let productosDeMarca = productosFiltrados.filter(producto => producto.marca.toLowerCase() === valor);
     if (productosDeMarca.length === 0) {
       alert("No se encontraron productos de la marca indicada.");
     }
     return productosDeMarca;
   } else if (criterio === "precio") {
-    
     let limitePrecio = parseFloat(valor);
     let productosPorPrecio = productosFiltrados.filter(producto => producto.precio <= limitePrecio);
     if (productosPorPrecio.length === 0) {
@@ -107,7 +105,7 @@ function mostrarProductos(categoria) {
   let seleccion = prompt(listaProductos);
 
   if (seleccion !== null && seleccion >= 1 && seleccion <= productosLista.length) {
-    let productoSeleccionado = productosLista[seleccion - 1];
+    let productoSeleccionado = productosLista.find((producto, index) => index + 1 === parseInt(seleccion));
     carrito.push(productoSeleccionado);
     alert(`Has agregado: ${productoSeleccionado.marca} ${productoSeleccionado.modelo}\nPrecio: U$S ${productoSeleccionado.precio}`);
   } else {
