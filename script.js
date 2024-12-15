@@ -25,31 +25,28 @@ function verificarDatosUsuario() {
   }
 }
 
-// Función para obtener las marcas disponibles en la categoría seleccionada
 function obtenerMarcasDisponibles(categoria) {
   let marcas = new Set();
   productos[categoria].forEach(producto => {
-    marcas.add(producto.marca.toLowerCase()); // Agregar marcas en minúsculas
+    marcas.add(producto.marca.toLowerCase()); 
   });
-  return Array.from(marcas); // Convertir el Set en un Array
+  return Array.from(marcas); 
 }
 
-// Función de filtrado por marca o precio
 function filtrarProductos(categoria, criterio, valor) {
   let productosFiltrados = productos[categoria];
 
-  // Convertimos el valor a minúsculas para hacer una comparación insensible al caso (mayúsculas/minúsculas)
   valor = valor.toLowerCase();
 
   if (criterio === "marca") {
-    // Filtra por marca, asegurando que tanto el valor del usuario como la marca del producto estén en minúsculas
+
     let productosDeMarca = productosFiltrados.filter(producto => producto.marca.toLowerCase() === valor);
     if (productosDeMarca.length === 0) {
       alert("No se encontraron productos de la marca indicada.");
     }
     return productosDeMarca;
   } else if (criterio === "precio") {
-    // Filtra por precio
+    
     let limitePrecio = parseFloat(valor);
     let productosPorPrecio = productosFiltrados.filter(producto => producto.precio <= limitePrecio);
     if (productosPorPrecio.length === 0) {
@@ -68,7 +65,6 @@ function mostrarProductos(categoria) {
 
   switch (filtro) {
     case "1":
-      // Obtener marcas disponibles en la categoría seleccionada
       let marcasDisponibles = obtenerMarcasDisponibles(categoria);
       let marcasLista = "Selecciona una marca:\n";
       marcasDisponibles.forEach((marca, index) => {
